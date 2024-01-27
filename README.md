@@ -59,7 +59,7 @@
 
    ```
 
-6. Pass Cusotm Command line arguments
+6. Pass Custom Command line arguments
 
    ```sh
    mvn exec:java -Dexec.mainClass="com.example.Main" [-Dexec.args="argument1"]
