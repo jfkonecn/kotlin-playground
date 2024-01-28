@@ -11,14 +11,14 @@ internal class Day11Tests {
     @Throws(IOException::class)
     fun example1() {
         val lines = getExampleText("year2023", "day11")
-        assertEquals(-1, part1(lines))
+        assertEquals(374, part1(lines))
     }
 
     @Test
     @Throws(IOException::class)
     fun real1() {
         val lines = getRealText("year2023", "day11")
-        assertEquals(-1, part1(lines))
+        assertEquals(9522407, part1(lines))
     }
 
     @Test
