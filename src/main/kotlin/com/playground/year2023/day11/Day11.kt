@@ -1,7 +1,9 @@
 package com.playground.year2023.day11
 
-fun part1(lines: List<String>): Int {
-    var expandFactor = 2
+fun sumOfDistancesBetweenGalaxies(
+    lines: List<String>,
+    expandFactor: Int,
+): Int {
     var columnsWithGalaxies =
         lines.fold(hashSetOf<Int>(), { acc, s ->
             s.forEachIndexed { index, c ->
@@ -56,6 +58,13 @@ fun part1(lines: List<String>): Int {
     return distanceBetweenGalaxies.flatten().sum()
 }
 
-fun part2(lines: List<String>): Int {
-    return 0
+fun part1(lines: List<String>): Int {
+    return sumOfDistancesBetweenGalaxies(lines, 2)
+}
+
+fun part2(
+    lines: List<String>,
+    expandFactor: Int,
+): Int {
+    return sumOfDistancesBetweenGalaxies(lines, expandFactor)
 }
