@@ -3,7 +3,7 @@ package com.playground.year2023.day11
 fun sumOfDistancesBetweenGalaxies(
     lines: List<String>,
     expandFactor: Int,
-): Int {
+): Long {
     var columnsWithGalaxies =
         lines.fold(hashSetOf<Int>(), { acc, s ->
             s.forEachIndexed { index, c ->
@@ -16,7 +16,7 @@ fun sumOfDistancesBetweenGalaxies(
 
     var rowOffset = 0
     var galaxyCoordinates =
-        lines.foldIndexed(mutableListOf<Pair<Int, Int>>(), { row, acc, s ->
+        lines.foldIndexed(mutableListOf<Pair<Long, Long>>(), { row, acc, s ->
             var columnOffset = 0
             if (!s.contains("#")) {
                 rowOffset += expandFactor - 1
@@ -25,16 +25,12 @@ fun sumOfDistancesBetweenGalaxies(
                     if (!columnsWithGalaxies.contains(col)) {
                         columnOffset += expandFactor - 1
                     } else if (c == '#') {
-                        acc.add(Pair(row + rowOffset, col + columnOffset))
+                        acc.add(Pair(row.toLong() + rowOffset, col.toLong() + columnOffset))
                     }
                 }
             }
             acc
         })
-
-    galaxyCoordinates.forEach { (row, col) ->
-        println("$row, $col")
-    }
 
     // var map =
     // lines.flatMap { it ->
@@ -80,13 +76,13 @@ fun sumOfDistancesBetweenGalaxies(
     return distanceBetweenGalaxies.flatten().sum()
 }
 
-fun part1(lines: List<String>): Int {
+fun part1(lines: List<String>): Long {
     return sumOfDistancesBetweenGalaxies(lines, 2)
 }
 
 fun part2(
     lines: List<String>,
     expandFactor: Int,
-): Int {
+): Long {
     return sumOfDistancesBetweenGalaxies(lines, expandFactor)
 }
